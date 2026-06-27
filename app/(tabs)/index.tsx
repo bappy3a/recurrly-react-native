@@ -35,14 +35,14 @@ export default function Index() {
         <View>
             <ListHeading title="Upcomming" />
 
-             <FlatList
-                                    data={UPCOMING_SUBSCRIPTIONS}
-                                    renderItem={({ item }) => (<UpcomingSubscriptionCard {...item} />)}
-                                    keyExtractor={(item) => item.id}
-                                    horizontal
-                                    showsHorizontalScrollIndicator={false}
-                                    ListEmptyComponent={<Text className="home-empty-state">No upcoming renewals yet.</Text>}
-                                />
+              <FlatList
+                  data={UPCOMING_SUBSCRIPTIONS}
+                  renderItem={({ item }) => (<UpcomingSubscriptionCard data={item} />)}
+                  keyExtractor={(item) => item.id}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  ListEmptyComponent={<Text className="home-empty-state">No upcoming renewals yet.</Text>}
+              />
 
             {/* <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {UPCOMING_SUBSCRIPTIONS.map((sub) => (
