@@ -6,7 +6,7 @@ import images from "@/constants/images";
 import { colors } from "@/constants/theme";
 import { formatCurrency } from "@/lib/utils";
 import dayjs from "dayjs";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
@@ -34,7 +34,21 @@ export default function Index() {
 
         <View>
             <ListHeading title="Upcomming" />
-            <UpcomingSubscriptionCard data={UPCOMING_SUBSCRIPTIONS[0]} />
+
+             <FlatList
+                                    data={UPCOMING_SUBSCRIPTIONS}
+                                    renderItem={({ item }) => (<UpcomingSubscriptionCard {...item} />)}
+                                    keyExtractor={(item) => item.id}
+                                    horizontal
+                                    showsHorizontalScrollIndicator={false}
+                                    ListEmptyComponent={<Text className="home-empty-state">No upcoming renewals yet.</Text>}
+                                />
+
+            {/* <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {UPCOMING_SUBSCRIPTIONS.map((sub) => (
+                    <UpcomingSubscriptionCard key={sub.id} data={sub} />
+                ))}
+            </ScrollView> */}
         </View>
 
         <View>
